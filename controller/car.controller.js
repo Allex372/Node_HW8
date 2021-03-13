@@ -26,19 +26,21 @@ module.exports = {
 
     createCars: async (req, res, next) => {
         try {
-            const { avatar, docs } = req;
+            const { photos, docs } = req;
 
             const createdCar = await carService.createCar(req.body);
 
-            if (avatar) {
-                // eslint-disable-next-line max-len
-                const { finalFilePath, uploadPath, fileDir } = filePathBuider.fileBuilderPath(avatar.name, 'photos', createdCar._id);
+            if (photos) {
+                for (const photo of photos) {
+                    // eslint-disable-next-line max-len
+                    const { finalFilePath, uploadPath, fileDir } = filePathBuider.fileBuilderPath(photo.name, 'photos', createdCar._id);
 
-                await fs.mkdir(fileDir, { recursive: true });
+                    await fs.mkdir(fileDir, { recursive: true });
 
-                await avatar.mv(finalFilePath);
+                    await photo.mv(finalFilePath);
 
-                await carService.updateCar(createdCar._id, { avatar: uploadPath });
+                    photos.forEach( async photo  => await carService.updateCar(createdCar._id, { photos: uploadPath }));
+                }
             }
 
             if (docs) {

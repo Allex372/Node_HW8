@@ -6,7 +6,7 @@ module.exports = {
         try {
             const { files } = req;
 
-            console.log(files);
+            // console.log(files);
 
             const documents = [];
             const photos = [];
@@ -41,6 +41,7 @@ module.exports = {
 
             req.videos = videos;
             req.docs = documents;
+            // eslint-disable-next-line prefer-destructuring
             req.photos = photos;
 
             next();
