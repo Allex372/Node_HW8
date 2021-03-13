@@ -32,7 +32,7 @@ module.exports = {
     createUser: async (req, res, next) => {
         try {
             const {
-                body: { password, email, name }, avatar, docs, video
+                body: { password, email, name }, avatar, docs, videos
             } = req;
             const hashPassword = await passwordsHasher.hash(password);
 
@@ -60,15 +60,15 @@ module.exports = {
                 await userService.updateUser(createdUser._id, { docs: uploadPath });
             }
 
-            if (video) {
+            if (videos) {
                 // eslint-disable-next-line max-len
-                const { finalFilePath, uploadPath, fileDir } = filePathBuider.fileBuilderPath(video.name, 'videos', createdUser._id);
+                const { finalFilePath, uploadPath, fileDir } = filePathBuider.fileBuilderPath(videos.name, 'videos', createdUser._id);
 
                 await fs.mkdir(fileDir, { recursive: true });
 
-                await docs.mv(finalFilePath);
+                await videos.mv(finalFilePath);
 
-                await userService.updateUser(createdUser._id, { docs: uploadPath });
+                await userService.updateUser(createdUser._id, { videos: uploadPath });
             }
 
             // await emailService.sendMail(email, emailActions.WELCOME, { userName: name });

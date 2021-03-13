@@ -6,7 +6,7 @@ module.exports = {
         try {
             const { files } = req;
 
-            console.log(files);
+            console.log(files.name);
 
             const documents = [];
             const photos = [];
@@ -63,5 +63,35 @@ module.exports = {
         } catch (e) {
             next(e);
         }
-    }
+    },
+    checkDocumentLength: (req, res, next) => {
+        try {
+            const [docs] = req.docs;
+
+            if (req.photos.length > 1) {
+                throw new ErrorHendler(errorMessages.TOO_MATCH_PHOTOS);
+            }
+
+            req.docs = docs;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+    checkVideoLength: (req, res, next) => {
+        try {
+            const [videos] = req.videos;
+
+            if (req.photos.length > 1) {
+                throw new ErrorHendler(errorMessages.TOO_MATCH_PHOTOS);
+            }
+
+            req.videos = videos;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
 };

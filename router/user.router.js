@@ -11,6 +11,8 @@ router.delete('/:id', userController.deleteSingleUser);
 router.post('/',
     fileMiddleware.checkFile,
     fileMiddleware.checkAvatarLength,
+    fileMiddleware.checkDocumentLength,
+    fileMiddleware.checkVideoLength,
     // userMiddleware.isLoginExisted,
     // userMiddleware.isEmailCreated,
     // userMiddleware.isUserValid,
