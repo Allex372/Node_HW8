@@ -39,8 +39,7 @@ module.exports = {
 
                     await photo.mv(finalFilePath);
 
-                    // eslint-disable-next-line no-return-await
-                    photos.forEach(async (photo) => await carService.updateCar(createdCar._id, { photos: uploadPath }));
+                    photos.forEach( async photo => await carService.updateCar(createdCar._id, { photos: uploadPath }));
                 }
             }
 
