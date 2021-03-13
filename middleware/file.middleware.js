@@ -6,7 +6,7 @@ module.exports = {
         try {
             const { files } = req;
 
-            console.log(files.name);
+            console.log(files);
 
             const documents = [];
             const photos = [];
@@ -68,7 +68,7 @@ module.exports = {
         try {
             const [docs] = req.docs;
 
-            if (req.photos.length > 1) {
+            if (req.docs.length > 1) {
                 throw new ErrorHendler(errorMessages.TOO_MATCH_PHOTOS);
             }
 
@@ -83,7 +83,7 @@ module.exports = {
         try {
             const [videos] = req.videos;
 
-            if (req.photos.length > 1) {
+            if (req.videos.length > 1) {
                 throw new ErrorHendler(errorMessages.TOO_MATCH_PHOTOS);
             }
 

@@ -8,6 +8,8 @@ const ownerSubScheme = {
 const carScheme = new Schema({
     model: { type: String, required: true },
     year: { type: Number, default: 1999 },
+    avatar: { type: String },
+    docs: { type: String },
     // _owner: [{ type: Schema.Types.ObjectId }]
 }, { toObject: { virtuals: true }, toJSON: { virtuals: true } });
 

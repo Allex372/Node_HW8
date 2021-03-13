@@ -3,10 +3,10 @@ const uuid = require('uuid').v1;
 
 module.exports = {
     fileBuilderPath: (docName, itemType, itemId) => {
-        const pathWithoutStatic = path.join('user', `${itemId}`, itemType);
-        // console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-        // console.log(docName, itemType, itemId);
-        // console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+        const pathWithoutStatic = path.join('cars', `${itemId}`, itemType);
+        console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+        console.log(docName, itemType, itemId);
+        console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
 
         const fileDir = path.join(process.cwd(), 'static', pathWithoutStatic);
 
