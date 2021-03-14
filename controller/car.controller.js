@@ -30,6 +30,8 @@ module.exports = {
 
             const createdCar = await carService.createCar(req.body);
 
+            const arr = [];
+
             if (photos) {
                 for (const photo of photos) {
                     // eslint-disable-next-line max-len
@@ -41,7 +43,11 @@ module.exports = {
 
                     // upload.push(uploadPath)
 
-                    photos.forEach(await carService.updateCar(createdCar._id, { photos: uploadPath }));
+                    arr.push(uploadPath);
+
+                    if (arr.length === 3) {
+                        await carService.updateCar(createdCar._id, { photos: arr });
+                    }
                 }
             }
 
