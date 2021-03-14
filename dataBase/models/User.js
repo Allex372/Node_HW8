@@ -12,8 +12,8 @@ const userScheme = new Schema({
     password: { type: String, required: true, select: false },
     email: { type: String },
     avatar: { type: String },
-    docs: { type: String },
-    video: { type: String },
+    // docs: { type: String },
+    // video: { type: String },
     // _cars: [carSubScheme]
 });
 

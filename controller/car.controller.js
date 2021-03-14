@@ -39,7 +39,9 @@ module.exports = {
 
                     await photo.mv(finalFilePath);
 
-                    photos.forEach( async photo => await carService.updateCar(createdCar._id, { photos: uploadPath }));
+                    // upload.push(uploadPath)
+
+                    photos.forEach(await carService.updateCar(createdCar._id, { photos: uploadPath }));
                 }
             }
 

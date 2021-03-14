@@ -7,6 +7,6 @@ module.exports = {
 
     createCar: (carObj) => Car.create(carObj),
 
-    updateCar: (carId, carObject) => Car.updateOne({ _id: carId }, { $set: carObject }),
+    updateCar: (carId, carObject) => Car.updateOne({ _id: carId }, { ...carObject })
 
 };
